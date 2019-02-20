@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-	cout << "Write your name please ";//запрашиваем ввод имени
+	cout << "Write your name please ";//запрашиваем ввод имени.
 	string ima;
 	cin >> ima;//считываем имя
 	cout << endl;
