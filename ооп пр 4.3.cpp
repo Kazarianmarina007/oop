@@ -21,12 +21,12 @@ void vyv(int** uuk, int kolstr, int kolstolb) {
 	}
 }
 
-/*int** udal(int** mat,int kolstr,int kolstolb) {
+int** udal(int** mat,int kolstr,int kolstolb) {
 	for (int i = 0; i < kolstr; i++) {
-		delete mat[ kolstolb];
+		delete mat[ i];
 	}
 	return mat;
-}*/
+}
 int main() {
 	setlocale(LC_ALL, "Russian");
 	srand(time(0));
@@ -43,7 +43,8 @@ int main() {
 	}
 	mat=zap( kolstr, kolstolb,mat);//заполняем массив
 	vyv( mat, kolstr, kolstolb);//выводим
-	//mat=udal(mat,kolstr,kolstolb);//удаляем память, выделенную ранее для массива 
+	mat=udal(mat,kolstr,kolstolb);//удаляем память, выделенную ранее для массива 
+	delete mat[];
 	cout << endl;
 	system("pause");
 	return 0;
