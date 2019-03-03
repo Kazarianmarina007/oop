@@ -3,7 +3,7 @@
 using namespace std;
 
 class T_S {//транспортное средство
-public:
+protecred:
 	bool prava;//необходимость прав
 	int kol_k;//кол-во колес
 	int kol_p;//кол-во пассажиров

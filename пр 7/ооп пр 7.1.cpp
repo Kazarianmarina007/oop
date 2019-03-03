@@ -3,7 +3,7 @@
 using namespace std;
 
 class animal {
-public:
+protected:
 	string klichka;
 	int ves;
 	int rost;

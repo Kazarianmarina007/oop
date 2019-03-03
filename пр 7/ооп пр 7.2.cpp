@@ -3,7 +3,7 @@
 using namespace std;
 
 class fig {
-public:
+protected:
 	int kol_ug;
 	virtual void S()=0;
 };
