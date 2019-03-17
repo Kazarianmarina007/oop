@@ -2,7 +2,7 @@
 #include "Complex.h"
 
 int main() {
-	setlocale (LC_ALL, "Russian");
+	setlocale(LC_ALL, "Russian");
 	ifstream f1;
 	f1.open("kek.txt");
 	int kol;
@@ -26,4 +26,5 @@ int main() {
 	mas = NULL;
 	system("pause");
 	return 0;
-}
+}// main_lab1.2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
