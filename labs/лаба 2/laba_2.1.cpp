@@ -12,10 +12,10 @@ int main()
 	string a, b,d;
 	char c;
 	string (*f)(string, string);
-    cout << "введите два слова"<<endl;
+    cout << "vvedite 2 slova"<<endl;
 	cin >> a >> b;
 	cout << endl;
-	cout << "в каком порядке вывести" << endl << "1) 1 2 " << endl << "2) 2 1" << endl;
+	cout << "v kakom poriadke vyvesti " << endl << "1) 1 2 " << endl << "2) 2 1" << endl;
 	cin >> c;
 	switch (c) {
 	case '1':f = p1; break;
@@ -23,7 +23,7 @@ int main()
 	default:f = NULL; break;
 	}
 	d = f(a, b);
-	cout << "ответ: " << d;
+	cout << "otvet: " << d;
 	f = NULL;
 	system("pause");
 	return 0;

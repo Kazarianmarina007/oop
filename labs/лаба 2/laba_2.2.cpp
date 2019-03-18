@@ -15,7 +15,7 @@ int main()
 	int *mas=new int[10];//выделение динамической памяти под массив
 	int res;
 	int *(*f)(int[]);//создание указателя на функцию
-	cout << "исходный массив: " << endl;
+	cout << "ishodhiy massiv: " << endl;
 	for (int i = 0; i < 10; i++) {
 		mas[i]= rand() % 20-10;//заполнение рандомными числами
 		cout << mas[i] << ' ';//вывод на экран
@@ -63,7 +63,7 @@ int *(*un(int *mas))(int *) {//универсальная функция,возвращающая указатель на ф
 	for (int i = 0; i < 10; i++) {
 		sum = sum + mas[i];
 	}
-	cout << "первое число " << p << " cумма всех элементов " << sum << endl;
+	cout << "pervoe chislo " << p << " summa vseh elementov " << sum << endl;
 	if (p == sum) { return in; }
 	else if (p > sum) { return neub; }
 	else { return nevoz; }
