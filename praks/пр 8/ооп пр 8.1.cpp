@@ -17,8 +17,8 @@ int main() {
 		sch_f.close();
 	}
 	else {
-		cout << "Файла не было,но сейчас он создастся автоматичеки" << endl;
-		cout << "Запишите данные в файл и перезапустите программу." << endl;
+		cout << "the file didn't exist, but it will be created automatically" << endl;
+		cout << "write data on the file and restart the programm" << endl;
 		sozd_f.open("kek.txt");
 		sozd_f.close();
 	}

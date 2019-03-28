@@ -25,20 +25,19 @@ int main() {
 label:
 	setlocale(LC_ALL, "Russian");
 	int size;
-	cout << "Ввести размерность массива: ";
+	cout << "enter the array size: ";
 	cin >> size;
-	double *uk;//создаем указатель на массив дабл
-	uk = vyd(size);//вызываем функцию выделения памяти для массива
-	uk = zap(size, uk);//заполняем массив
-	vyv(size, uk);//выводим
-	uk=udal(uk);//удаляем память, выделенную ранее для массива 
+	double *uk;//sozdaem ukazatel na massiv double
+	uk = vyd(size);// vyzivaem funkciu vydelenia pamiati dlia massiva 
+	uk = zap(size, uk);//zapolniaem massiv
+	vyv(size, uk);//vyvodim
+	uk=udal(uk);//udaliaem pamat, vydelennuu ranee dlia massiva 
 	cout << endl;
-	cout << "1.продолжить создавать массивы или 2.выйти? ";
-	cout << "выберите номер операции";
+	cout << "1.continue creating array or 2.exit? ";
+	cout << "choose the number of operation";
 	int otvp;
 	cin >> otvp;
-	if (otvp == 1) goto label;//если нужно, то повторям все снова
-	//delete[] uk;
+	if (otvp == 1) goto label;//esli nujno,povtoriaem s nachala
 	system("pause");
 	return 0;
 

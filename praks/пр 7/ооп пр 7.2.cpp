@@ -23,7 +23,7 @@ public:
 		d2 = d2_r;
 	}
 	void S() {
-		cout << "площадь ромба равна"<<s_r;
+		cout << "diamond square is "<<s_r;
 	}
 };
 
@@ -37,7 +37,7 @@ public:
 		b = b_p;
 	}
 	void S() {
-		cout << "площадь прямоугольника равна" << s_p;
+		cout << "rectangle square is " << s_p;
 	}
 };
 

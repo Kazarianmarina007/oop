@@ -3,22 +3,22 @@
 #include <ctime>
 using namespace std;
 
-int *in(int *mas);//инвертирование
-int *neub(int *mas);//сортировка по неубыванию
-int *nevoz(int *mas);//сортировка по невозрастанию
-int *(*un(int *mas))(int *);//универсальная функция, возвращающая указатель на функцию
+int *in(int *mas);//invertirovanie
+int *neub(int *mas);//sortirovka po neubuvaniu
+int *nevoz(int *mas);//sortirovka po nevozrastaniu
+int *(*un(int *mas))(int *);//universalnaia funkcia,vozvrashiaushaia ukazatel na funkciu
 
 int main()
 {	
 	srand(time(0));
 	setlocale(LC_ALL, "Russian");
-	int *mas=new int[10];//выделение динамической памяти под массив
+	int *mas=new int[10];//vydelenie dinamicheskoi pamiati pod massiv
 	int res;
-	int *(*f)(int[]);//создание указателя на функцию
+	int *(*f)(int[]);//sozdanie ukazatelia na funkciu
 	cout << "ishodhiy massiv: " << endl;
 	for (int i = 0; i < 10; i++) {
-		mas[i]= rand() % 20-10;//заполнение рандомными числами
-		cout << mas[i] << ' ';//вывод на экран
+		mas[i]= rand() % 20-10;//zapolnenie randomnimi chislami
+		cout << mas[i] << ' ';//vyvod na ekran
 	}
 	cout << endl;
 	f = un(mas);
@@ -32,13 +32,13 @@ int main()
 	return 0;
 
 }
-int *in(int *mas) {//инвертирование
+int *in(int *mas) {//invertirovanie
 	for (int i = 0; i <= 4; i++) {
 		swap(mas[i], mas[i + 5]);
 	}
 	return mas;
 };
-int *neub(int *mas) {//сортировка по неубыванию
+int *neub(int *mas) {//sortirovka po neubuvaniu
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9 - i; j++) {
 			if (mas[j] > mas[j + 1]) {
@@ -48,7 +48,7 @@ int *neub(int *mas) {//сортировка по неубыванию
 	}
 	return mas;
 };
-int *nevoz(int *mas) {//сортировка по невозрастанию
+int *nevoz(int *mas) {//sortirovka po nevozrastaniu
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9 - i; j++) {
 			if (mas[j] < mas[j + 1]) {
@@ -58,7 +58,7 @@ int *nevoz(int *mas) {//сортировка по невозрастанию
 	}
 	return mas;
 };
-int *(*un(int *mas))(int *) {//универсальная функция,возвращающая указатель на функцию 
+int *(*un(int *mas))(int *) {//universalnaia funkcia,vozvrashiaushaia ukazatel na funkciu 
 	int p=mas[0], sum=0;
 	for (int i = 0; i < 10; i++) {
 		sum = sum + mas[i];

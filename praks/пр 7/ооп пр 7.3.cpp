@@ -2,13 +2,13 @@
 #include <iostream>
 using namespace std;
 
-class T_S {//транспортное средство
+class T_S {//vehicle
 protecred:
-	bool prava;//необходимость прав
-	int kol_k;//кол-во колес
-	int kol_p;//кол-во пассажиров
+	bool prava;//driving license
+	int kol_k;//number of wheels
+	int kol_p;//number of passengers
 };
-class ab :public T_S {//автобус
+class ab :public T_S {//bus
 public:
 	ab() { 
 		prava = true;
@@ -16,7 +16,7 @@ public:
 		kol_p = 30;
 	}
 };
-class am :public T_S {//автомобиль
+class am :public T_S {//car
 public:
 	am() {
 		prava = true;
@@ -25,7 +25,7 @@ public:
 	}
 };
 
-class vel :public T_S {//велик
+class vel :public T_S {//bicycle
 public:
 	vel() {
 		prava = false;

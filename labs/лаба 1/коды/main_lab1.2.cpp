@@ -21,10 +21,9 @@ int main() {
 			mZ = abs(mas[i]);
 		}
 	}
-	cout << "Максимальное по модулю комплексное число имеет номер: " << mI << endl;
+	cout << "maksimalnoe po modulu kompleksnoe chislo imeet modul " << mI << endl;
 	delete[] mas;
 	mas = NULL;
 	system("pause");
 	return 0;
-}// main_lab1.2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+}

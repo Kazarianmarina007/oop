@@ -9,7 +9,7 @@ int main() {
 	setlocale(LC_ALL, "Russian");
 	ofstream f;
 	string k;
-	cout << "¬ведите текст, который будет записана в файл: " << endl;
+	cout << "exit text to be written on file " << endl;
 	getline(cin, k);
 	f.open("kek.txt");
 	f << k;

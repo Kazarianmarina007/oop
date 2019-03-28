@@ -12,11 +12,11 @@ struct biblio {
 };
 int main() {
 	biblio b1 = {
-		(string)"2 улица",(string)"крутая",2001,{
+		(string)"2 ulica",(string)"krutaia",2001,{
 			{
-		510,(string) "Кинг",1990,(string)" Сияние"};
+		510,(string) "King",1990,(string)" sianie"};
 	{
-		400,(string) "Роулинг",2007,(string) "Гарри П"};
+		400,(string) "Rowling",2007,(string) "Harry P"};
 												}
 	};
 	system("pause");

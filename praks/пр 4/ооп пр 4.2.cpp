@@ -12,7 +12,7 @@ double* zap(double* uk) {
 	}
 	return uk;
 }
-double* sort(double* uk) {//функци€ сортировки, мен€юща€ местами элементы с четными и нечетными позици€ми
+double* sort(double* uk) {//funkcia sortirovki,meniaushaa mestami elementy s chetnimi i nechetnumi posiciami 
 	for (int i = 0; i < 11; i++) {
 		if (i % 2 == 0) {
 			swap(uk[i], uk[i + 1]);
@@ -31,12 +31,12 @@ double* udal(double* uk) {
 }
 int main() {
 	setlocale(LC_ALL, "Russian");
-	double *uk;//создаем указатель на массив дабл
-	uk = vyd();//вызываем функцию выделени€ пам€ти дл€ массива
-	uk=zap(uk);//заполн€ем массив
+	double *uk;//sozdaem ukazatel na massiv double
+	uk = vyd();//vyzivaem funkciu vydelenia pamiati dlia massiva 
+	uk=zap(uk);//zapolniaem massiv
 	uk=sort(uk);
-	vyv(uk);//выводим
-	uk=udal(uk);//удал€ем пам€ть, выделенную ранее дл€ массива 
+	vyv(uk);//vyvodim
+	uk=udal(uk);//udaliaem pamat, vydelennuu ranee dlia massiva 
 	cout << endl;
 	system("pause");
 	return 0;

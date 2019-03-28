@@ -2,11 +2,11 @@
 #include "Complex.h"
 
 void print_menu() {
-	cout << '\t' << "Действия над комплексными числами" << endl;
-	cout << "1) Сложение" << endl;
-	cout << "2) Вычитание" << endl;
-	cout << "3) Умножение" << endl;
-	cout << "4) Деление" << endl;
+	cout << '\t' << "deistvia nad kompleksnimi chislami" << endl;
+	cout << "1) slojenie" << endl;
+	cout << "2) vychitanie" << endl;
+	cout << "3) umnojenie" << endl;
+	cout << "4) delenie" << endl;
 };
 
 int main()
@@ -22,39 +22,39 @@ int main()
 		{
 		case 1:
 
-			cout << "Введите действительную и мнимую часть первого комплексного числа: ";
+			cout << "vvedite deistvitelnuu i mnimuu chast pervogo kompleksnogo chisla: ";
 			cin >> a.re >> a.im;
-			cout << "Введите действительную и мнимую часть второго комплексного числа: ";
+			cout << "vvedite deistvitelnuu i mnimuu chast vtorogo kompleksnogo chisla: ";
 			cin >> b.re >> b.im;
 			res = sum(a, b);
-			cout << "Результат: " << '\t' << res.re << " + i" << res.im << endl;
+			cout << "Resulat: " << '\t' << res.re << " + i" << res.im << endl;
 			break;
 		case 2:
 
-			cout << "Введите действительную и мнимую часть первого комплексного числа: ";
+			cout << "vvedite deistvitelnuu i mnimuu chast pervogo kompleksnogo chisla: ";
 			cin >> a.re >> a.im;
-			cout << "Введите действительную и мнимую часть второго комплексного числа: ";
+			cout << "vvedite deistvitelnuu i mnimuu chast vtorogo kompleksnogo chisla:";
 			cin >> b.re >> b.im;
 			res = raz(a, b);
-			cout << "Результат: " << '\t' << res.re << " + i" << res.im << endl;
+			cout << "Resulat: " << '\t' << res.re << " + i" << res.im << endl;
 			break;
 		case 3:
 
-			cout << "Введите действительную и мнимую часть первого комплексного числа: ";
+			cout << "vvedite deistvitelnuu i mnimuu chast pervogo kompleksnogo chisla: ";
 			cin >> a.re >> a.im;
-			cout << "Введите действительную и мнимую часть второго комплексного числа: ";
+			cout << "vvedite deistvitelnuu i mnimuu chast vtorogo kompleksnogo chisla:";
 			cin >> b.re >> b.im;
 			res = umn(a, b);
-			cout << "Результат: " << '\t' << res.re << " + i" << res.im << endl;
+			cout << "Resulat: " << '\t' << res.re << " + i" << res.im << endl;
 			break;
 		case 4:
 
-			cout << "Введите действительную и мнимую часть первого комплексного числа: ";
+			cout << "vvedite deistvitelnuu i mnimuu chast pervogo kompleksnogo chisla: ";
 			cin >> a.re >> a.im;
-			cout << "Введите действительную и мнимую часть второго комплексного числа: ";
+			cout << "vvedite deistvitelnuu i mnimuu chast vtorogo kompleksnogo chisla: ";
 			cin >> b.re >> b.im;
 			res = del(a, b);
-			cout << "Результат: " << '\t' << res.re << " + i" << res.im << endl;
+			cout << "Resulat:" << '\t' << res.re << " + i" << res.im << endl;
 			break;
 		}
 	system("pause");

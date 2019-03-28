@@ -30,10 +30,10 @@ int** udal(int** mat,int kolstr,int kolstolb) {
 int main() {
 	setlocale(LC_ALL, "Russian");
 	srand(time(0));
-	cout << "введите кол-во строк массива ";
+	cout << "enter the number of rows of the array ";
 	int kolstr;
 	cin >> kolstr;
-	cout << endl << "введите кол-во столбцов массива ";
+	cout << endl << "enter the number of colomns of the array ";
 	int kolstolb;
 	cin >> kolstolb;
 	cout << endl;
@@ -41,9 +41,9 @@ int main() {
 	for (int i = 0; i < kolstr; i++) {
 		mat[i] = new int[kolstolb];
 	}
-	mat=zap( kolstr, kolstolb,mat);//заполняем массив
-	vyv( mat, kolstr, kolstolb);//выводим
-	mat=udal(mat,kolstr,kolstolb);//удаляем память, выделенную ранее для массива 
+	mat=zap( kolstr, kolstolb,mat);//zapolniaem massiv
+	vyv( mat, kolstr, kolstolb);//vyvodim
+	mat=udal(mat,kolstr,kolstolb);//udaliaem pamat, vydelennuu ranee dlia massiva
 	delete mat[];
 	cout << endl;
 	system("pause");

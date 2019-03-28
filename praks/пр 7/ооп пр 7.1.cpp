@@ -18,7 +18,7 @@ public:
 		r = rost;
 	}
 	void zvuk() {
-		cout<<"рррр, € хочу рычать, а не м€укать";
+		cout<<"rrrr,I want to roar,not to mew";
 	}
 };
 class sob :public animal {
@@ -30,7 +30,7 @@ public:
 		r = rost;
 	}
 	void zvuk() {
-		cout << "эта кошка мен€ достала";
+		cout << "this cat make me crazy";
 	}
 };
 
@@ -43,7 +43,7 @@ public:
 		r = rost;
 	}
 	void zvuk() {
-		cout << "хочу на карнавал в –ио, а не вот это вот все";
+		cout << "I want to carnival in Rio,but not this here";
 	}
 };
 

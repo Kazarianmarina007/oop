@@ -43,7 +43,7 @@ int main() {
 	mas[5] = new CountryHouse(156000000);
 	mas[6] = new CountryHouse(22300000);
 	for (int i = 0; i < 7; i++) {
-		cout << "Ќалог на данное имущество составл€ет: " << '\t' << mas[i]->result() << endl;
+		cout << "tax on thid property is " << '\t' << mas[i]->result() << endl;
 	}
 	for (int i = 0; i < 7; i++) {
 		delete mas[i];

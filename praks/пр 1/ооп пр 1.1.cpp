@@ -4,11 +4,11 @@
 using namespace std;
 
 int main() {
-	cout << "Write your name please ";//запрашиваем ввод имени.
+	cout << "Write your name please ";//zaprashivaem vvod imeni
 	string ima;
-	cin >> ima;//считываем имя
+	cin >> ima;//schityvaem ima
 	cout << endl;
-	cout << "Hello, " << ima << "! nice to meet you"<< endl; //вывводим результат
+	cout << "Hello, " << ima << "! nice to meet you"<< endl; //vyvodim resultat
 	system ("pause");
 	return 0;
 }

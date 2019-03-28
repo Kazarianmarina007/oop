@@ -2,17 +2,17 @@
 #include <iostream>
 using namespace std;
 
-class ekran {//экран
+class ekran {//screen
 protected:
-	bool touch;//возможность сенсорного управления
-	int di;//диагональ
+	bool touch;//touch control
+	int di;//diagonal
 };
-class klava{ //клавиатура
+class klava{ //keyboard
 protected:
-	bool podsv;//наличие подсветки
-	bool dop_k;//наличие доп клавы справа
+	bool podsv;//presence of backlight
+	bool dop_k;//having an extra keyboard on the right
 };
-class nout :public ekran,public klava {//ноутбук
+class nout :public ekran,public klava {//laptop
 public:
 	string marka;
 	nout(string m, bool t,int d,bool p,bool k) {
@@ -23,7 +23,7 @@ public:
 		dop_k = k;
 	}
 };
-class komp :public ekran, public klava {//персональный компьютер
+class komp :public ekran, public klava {//personal computer
 public:
 	string marka;
 	komp(string m,  int d, bool p) {
@@ -34,7 +34,7 @@ public:
 		dop_k = true;
 	}
 };
-class tel :public ekran, public klava {//телефон
+class tel :public ekran, public klava {//telephone
 public:
 	string marka;
 	tel(string m, bool t, int d, bool p,bool k) {

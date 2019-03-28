@@ -12,10 +12,10 @@ struct Knigga {
 int main() {
 	setlocale(LC_ALL, "Russian");
 	Knigga k1 = {
-		510,(string) "Кинг",1990,(string)" Сияние"
+		510,(string) "King",1990,(string)" Sianie"
 	};
 	Knigga k2 = {
-		400,(string) "Роулинг",2007,(string) "Гарри П"
+		400,(string) "Rowling",2007,(string) "Harry P"
 	};
 	system("pause");
 	return 0;

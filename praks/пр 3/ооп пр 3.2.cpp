@@ -12,8 +12,8 @@ struct gruppa {
 int main() {
 	setlocale(LC_ALL, "Russian");
 	gruppa g1={
-		(string) "ИНБО-03-18",2018,(string) "Толик",{
-		(string) "Пашка",(string)"Маринка",(string)"Лепеха",(string)"Толик"}
+		(string) "INBO-03-18",2018,(string) "Tolik",{
+		(string) "Pashka",(string)"Marinka",(string)"Lepeha",(string)"Tolik"}
 	};
 	system("pause");
 	return 0;

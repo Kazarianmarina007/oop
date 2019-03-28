@@ -42,11 +42,11 @@ int main() {
 
 	v(m1,10);
 	v(m2,10);
-	cout << endl << "массив int: " << endl;
+	cout << endl << "array of int: " << endl;
 	for (int j = 0; j < 10; j++) {
 		cout << mas1[j] << " ";
 	}
-	cout << endl << "массив float: " << endl;
+	cout << endl << "array of float: " << endl;
 	for (int j = 0; j < 10; j++) {
 		cout << mas2[j] << " ";
 	}
