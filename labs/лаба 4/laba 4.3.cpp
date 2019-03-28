@@ -8,18 +8,25 @@ private:
 	float re;
 	float im;
 public:
-	Complex (float re, float im) {
-		re = re;
-		im = im;
+	Complex(float a, float b) {
+		re = a;
+		im = b;
 	}
 	float mod() {
 		return sqrt(re*re + im * im);
 	};
 	float arg() {
-		float t, m;
-		m = sqrt(re*re + im * im);
-		t = atan(im / re);
-		return t;
+		float res;
+		if (re > 0) { res = atan(im / re); }
+		else if (re == 0) {
+			if (re > 0) { res = 3.14 / 2; }
+			else { res = 3.14 / 2; }
+		}
+		else {
+			if (im >= 0) { res = 3.14 + atan(im / re); }
+			else { res = -3.14 + atan(im / re); }
+		}
+		return res;
 	}
 
 	void pr() {
@@ -29,9 +36,10 @@ public:
 
 int main()
 {
-	Complex c1(-10,20), c2(-2,90);
+	Complex c1(-10, 20);
+	Complex c2(-20, 90);
 	c1.pr();
 	c2.pr();
 	system("pause");
 	return 0;
-}s
+}
