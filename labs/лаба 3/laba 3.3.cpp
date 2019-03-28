@@ -8,10 +8,12 @@ private:
 	float re;
 	float im;
 public:
-	Complex(float a, float b) {
-		re = a;
-		im = b;
-	}
+	void s_a(float a) {
+		this->re = a;
+	};
+	void s_b(float b) {
+		this->im = b;
+	};
 	float mod() {
 		return sqrt(re*re + im * im);
 	};
@@ -36,8 +38,11 @@ public:
 
 int main()
 {
-	Complex c1(-10, 20);
-	Complex c2(-20, 90);
+	Complex c1, c2;
+	c1.s_a(-10);
+	c2.s_a(-20);
+	c1.s_b(20);
+	c2.s_b(90);
 	c1.pr();
 	c2.pr();
 	system("pause");
