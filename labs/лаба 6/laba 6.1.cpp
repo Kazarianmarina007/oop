@@ -37,7 +37,7 @@ public:
 			}
 		}
 		else {
-			cout << "Данный староста не может менять оценки студента другой группы" << endl;
+			cout << "starosta ne mojet menat ocenki drugoy gruppy << endl;
 		}
 	}
 };
