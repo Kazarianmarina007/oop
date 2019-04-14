@@ -16,7 +16,7 @@ int main()
         Student* stud;
         cout << "ima i familia: ";
         cin >> stud->name >> stud->family;
-        cout << "Ãğóïïà: ";
+        cout << "gruppa: ";
         cin >> stud->group;
         cout << "ocenki studenta:";
         for (int j = 0; j < 5; j++) {
