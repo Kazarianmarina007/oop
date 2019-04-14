@@ -51,9 +51,9 @@ public:
 	};
 
 	float getData() {
-		cout << "Комплексное число: " << endl;
-		cout << "Действительная часть: " << re << endl;
-		cout << "Мнимая часть: " << im << endl;
-		cout << "Модуль числа: " << this->get_abs() << endl << endl;
+		cout << "Kompleksnoe chislo " << endl;
+		cout << "deistvitelnaia chast: " << re << endl;
+		cout << "mnimaia chast: " << im << endl;
+		cout << "modul chisla: " << this->get_abs() << endl << endl;
 	};
 };

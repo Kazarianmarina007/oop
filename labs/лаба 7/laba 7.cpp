@@ -5,16 +5,16 @@ using namespace std;
 class Human {
 protected:
 	static int count;
-	string name; //имя
-	string surname; //фамилия
-	string midname; // отчество
+	string name; 
+	string surname; 
+	string midname; 
 	int age;
 public:
 	Human() {
 		count++;
-		name = "Иван";
-		surname = "Иванов";
-		midname = "Иванович";
+		name = "Petr";
+		surname = "Petrov";
+		midname = "Petrovich";
 		age = 21;
 	};
 
