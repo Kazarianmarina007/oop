@@ -16,14 +16,14 @@ public:
 		price = p;
 	};
 	void getData() {
-		cout << "бренд " << brand << " длина " << size_h << " ширина " << size_w << " цена " << price << endl;
+		cout << "brand " << brand << " dlina " << size_h << " shirina " << size_w << " cena " << price << endl;
 	};
 };
 
 int main() {
 	setlocale(LC_ALL, "RUSSIAN");
-	Tiles t1((string)"напольний", 15, 11, 550);
-	Tiles t2((string)"настенный",55,45,9650);
+	Tiles t1((string)"napolniy", 15, 11, 550);
+	Tiles t2((string)"nastenniy",55,45,9650);
 	t1.getData();
 	t2.getData();
 	return 0;

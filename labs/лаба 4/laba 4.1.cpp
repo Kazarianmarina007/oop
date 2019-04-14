@@ -15,15 +15,15 @@ public:int some;
 		   this->fam = f;
 	   };
 	void p() {
-		cout << " имя " << ima << " фамилия " << fam << " возраст " << voz << endl;
+		cout << " ima " << ima << " familia" << fam << " vozrast " << voz << endl;
 	}
 };
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	Child c1((string)"Маринка", (string)"Казарян", 18);
-	Child c2((string)"Светочка",(string)"Ефремова",18);
+	Child c1((string)"Marinka", (string)"Kazarian", 18);
+	Child c2((string)"Svetochka",(string)"Efremova",18);
 	c1.p();
 	c2.p();
 	system("pause");
