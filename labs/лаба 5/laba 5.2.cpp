@@ -12,25 +12,25 @@ class Vector {
             y = b;
         }
 
-        Vector& operator= (Vector& value) {
-            this->x = value.x;
-            this->y = value.y;
+        Vector& operator= (Vector& mass) {
+            this->x = mass.x;
+            this->y = mass.y;
             return *this;
         };
 
-        friend bool operator== (const Vector& left, const Vector& right) {
-            bool isX = left.x == right.x;
-            bool isY = left.y == right.y;
+        friend bool operator== (const Vector& lev, const Vector& pr) {
+            bool isX = lev.x == pr.x;
+            bool isY = lev.y == pr.y;
             return isX && isY;
         };
 
-        friend ostream& operator<< (ostream& out, const Vector& value) {
-            out << "( " << value.x << " , " << value.y << " )" << endl;
+        friend ostream& operator<< (ostream& out, const Vector& mass) {
+            out << "( " << mass.x << " , " << mass.y << " )" << endl;
             return out;
         };
 
-        friend istream& operator>> (istream& is, const Vector& value) {
-            is >> value.x >> value.y;
+        friend istream& operator>> (istream& is, const Vector& mass) {
+            is >> mass.x >> mass.y;
             return is;
         }
 
