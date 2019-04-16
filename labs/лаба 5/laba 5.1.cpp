@@ -12,9 +12,9 @@ public:
 		im = b;
 	};
 
-	Complex& operator= (Complex& value) {
-		this->im = value.im;
-		this->re = value.re;
+	Complex& operator= (Complex& mass) {
+		this->im = mass.im;
+		this->re = mass.re;
 		return *this;
 	};
 
@@ -30,19 +30,19 @@ public:
 		return *this;
 	};
 
-	friend bool operator==(const Complex& left, const Complex& right) {
-		bool isReal = left.re == right.re;
-		bool isImage = left.im == right.im;
+	friend bool operator==(const Complex& lev, const Complex& pr) {
+		bool isReal = lev.re == pr.re;
+		bool isImage = lev.im == pr.im;
 		return isReal && isImage;
 	};
 
-	friend ostream& operator<<(ostream &out, const Complex& value) {
-		out << "Complex number: " << value.re << " + i * " << value.im << endl;
+	friend ostream& operator<<(ostream &out, const Complex& mass) {
+		out << "Complex number: " << mass.re << " + i * " << mass.im << endl;
 		return out;
 	};
 
-	friend istream& operator>>(istream &in, const Complex &number) {
-		in >> number.re >> number.im;
+	friend istream& operator>>(istream &in, const Complex &nom) {
+		in >> nom.re >> nom.im;
 		return in;
 	};
 
