@@ -20,7 +20,7 @@ public:
 		hvost = hv;
 	}
 	void zvuk() {
-		cout << "rrrr,I want to roar,not to mew";
+		cout << "aaaaaaaaa";
 	}
 };
 class fish :public alive {

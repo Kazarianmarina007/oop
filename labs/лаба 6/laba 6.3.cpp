@@ -6,15 +6,14 @@ using namespace std;
 
 class Dog : public Animal {
 private:
-	string name;
+	string ima;
 public:
-	Dog(int a, size_a sa, colors c, int rs, string n) : Animal(a, sa, c, rs) {
-		favourite_food = "Bones";
-		name = n;
+	Dog(int v, int r, bool hv,string im) : Animal(v, r, hv) {
+		ima = im;
 	};
 
-	void make_sound() {
-		cout << "Woof" << endl;
+	void zvuk() {
+		cout << "rrrr,I want to roar,not to mew" << endl;
 	};
 
 
@@ -22,14 +21,13 @@ public:
 
 class Cat : public Animal {
 private:
-	string name;
+	string ima;
 public:
-	Cat(int a, size_a sa, colors c, int rs, string n) : Animal(a, sa, c, rs) {
-		favourite_food = "Fishes";
-		name = n;
+	Cat(int v, int r, bool hv, string im) : Animal(v, r, hv) {
+		ima = im;
 	};
 
-	void make_sound() {
-		cout << "Meow" << endl;
+	void zvuk() {
+		cout << "vse taki meow" << endl;
 	};
 }
