@@ -1,82 +1,35 @@
 #include <iostream>
 #include <string>
+#include "laba 6.2.cpp"
+
 using namespace std;
 
-class Human {
-protected:
-	static int count;
+class Dog : public Animal {
+private:
 	string name;
-	string surname; 
-	string midname; 
-	int age;
 public:
-	Human() {
-		count++;
-		name = "Petr";
-		surname = "Petpov";
-		midname = "Petrovich";
-		age = 21;
-	};
-
-	Human(string n, string s, string m, int a) {
-		count++;
+	Dog(int a, size_a sa, colors c, int rs, string n) : Animal(a, sa, c, rs) {
+		favourite_food = "Bones";
 		name = n;
-		surname = s;
-		midname = m;
-		age = a;
 	};
 
-	virtual void print() = 0;
+	void make_sound() {
+		cout << "Woof" << endl;
+	};
 
-	virtual ~Human() { count--; };
+
 };
 
-class Student : public Human {
+class Cat : public Animal {
 private:
-	bool on_lesson;
+	string name;
 public:
-	Student() : Human() {
-		on_lesson = true;
+	Cat(int a, size_a sa, colors c, int rs, string n) : Animal(a, sa, c, rs) {
+		favourite_food = "Fishes";
+		name = n;
 	};
 
-	Student(string n, string s, string m, int a, bool on_l) : Human(n, s, m, a) {
-		on_lesson = on_l;
+	void make_sound() {
+		cout << "Meow" << endl;
 	};
-
-	void print() {
-		cout << "student" << endl;
-		cout << "name: " << name << endl;
-		cout << "surname: " << surname << endl;
-		cout << "midname: " << midname << endl;
-		cout << "age: " << age << endl;
-		cout << "on lesson? ";
-		cout << ((on_lesson) ? "yes" : "no") << endl;
-	};
-
-	~Student() {};
-};
-
-
-class Boss : public Human {
-private:
-	int number_of_workers;
-protected:
-	Boss() : Human() {
-		number_of_workers = 0;
-	}
-
-	Boss(string name, string surname, string midname, int age, int workers) : Human(name, surname, midname, age) {
-		number_of_workers = workers;
-	}
-
-	void print() {
-		cout << "boss" << endl;
-		cout << "name: " << name << endl;
-		cout << "surname: " << surname << endl;
-		cout << "midname: " << midname << endl;
-		cout << "age: " << age << endl;
-		cout << "number of workers: " << number_of_workers << endl;
-	};
-
-	~Boss() { };
-};
+}

@@ -59,14 +59,14 @@ public:
 
 class Boss : public Human {
 private:
-	int number_of_workers;
+	int kolr;
 protected:
 	Boss() : Human() {
-		number_of_workers = 0;
+		kolr = 0;
 	}
 
-	Boss(string name, string surname, string midname, int age, int workers) : Human(name, surname, midname, age) {
-		number_of_workers = workers;
+	Boss(string n, string s, string m, int a, int rab) : Human(n, s, m, a) {
+		kolr = rab;
 	}
 
 	void print() {
@@ -75,7 +75,7 @@ protected:
 		cout << "surname: " << surname << endl;
 		cout << "midname: " << midname << endl;
 		cout << "age: " << age << endl;
-		cout << "number of workers: " << number_of_workers << endl;
+		cout << "number of workers: " << kolr << endl;
 	};
 
 	~Boss() { };
