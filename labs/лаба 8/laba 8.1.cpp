@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "lab6_1.cpp"
+#include "laba 6.1.cpp"
 using namespace std;
 
 int main()
