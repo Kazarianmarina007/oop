@@ -56,6 +56,7 @@ int kol_zna = 0;//kol-vo znakov vnutri 1 pari skobok
 int dlina = 0;//dlina vvoda
 int del_na_m = 0;//delenie na minus 
 
+int zashchita (string vvod);
 void ob();//vivod pravil vvoda
 void cveta();
 string sozd_sk(string vvod, int dl);//sozdanie stroki, soderjashchey skobki na sootv mestah, a na ostalnih mestah probely
@@ -76,6 +77,14 @@ int main()
 	cveta();
 	int vveden_fon = 0, vveden_txt = 0;
 	cin >> vveden_fon >> vveden_txt;
+	if (vveden_fon == vveden_txt) {
+		while (vveden_fon == vveden_txt) {
+			cout << "вы ввели одинаковые цвета, ничего не будет видно" << endl;
+			cout << "введите еще раз ";
+			cin >> vveden_fon >> vveden_txt;
+			cout << endl;
+		}
+	}
 	cvet_f_t c1(vveden_fon,vveden_txt);
 	system("cls");
 	ob();//vivod menu
@@ -85,34 +94,76 @@ int main()
 	vvod = '(' + vvod + ')';
 	int dl = vvod.length();
 	dlina = dl;
+	int zashch = zashchita(vvod);
+	if (zashch == 0) {
+		string skobki = sozd_sk(vvod, dl);//massiv tolko so skobkami
 
-	string skobki = sozd_sk(vvod, dl);//massiv tolko so skobkami
+		kolsk = kolsk / 2;//uznaem kol-vo par skobok
+		int k = kolsk;
+		sk(skobki, kolsk, dl);//rasstavliaem prioretety skobok
 
-	kolsk = kolsk / 2;//uznaem kol-vo par skobok
-	int k = kolsk;
-	sk(skobki, kolsk, dl);//rasstavliaem prioretety skobok
-
-	float res = 0;
-	string vvod_izm = vvod;//ismeniaemiy vvod;
-	for (int i = 0; i < kolsk; i++) {
-		chisla(vvod_izm, prior_skL[i], prior_skP[i]);
-		vvod_izm = dop_dop_ismenenie(vvod_izm,prior_skL[i],prior_skP[i]);
-		znaki(vvod_izm, prior_skL[i], prior_skP[i]);
-		res = podschet(kol_zna, kol_ch);
-		vvod_izm = ismenen(vvod_izm, res, prior_skL[i], prior_skP[i]);
-		vvod_izm = dop_ismenen(vvod_izm);
-		chi.clear();
-		zna.clear();
-		id_zna.clear();
-		kol_ch = 0;
-		kol_zna = 0;
+		float res = 0;
+		string vvod_izm = vvod;//ismeniaemiy vvod;
+		for (int i = 0; i < kolsk; i++) {
+			chisla(vvod_izm, prior_skL[i], prior_skP[i]);
+			vvod_izm = dop_dop_ismenenie(vvod_izm, prior_skL[i], prior_skP[i]);
+			znaki(vvod_izm, prior_skL[i], prior_skP[i]);
+			res = podschet(kol_zna, kol_ch);
+			vvod_izm = ismenen(vvod_izm, res, prior_skL[i], prior_skP[i]);
+			vvod_izm = dop_ismenen(vvod_izm);
+			chi.clear();
+			zna.clear();
+			id_zna.clear();
+			kol_ch = 0;
+			kol_zna = 0;
+		}
+		if (res!=res) {
+			cout << "невозможно мосчитать, возможно деление на ноль, неопределенность, либо ln из отрицательного числа " << endl;
+		}
+		else {
+			cout << "результат: " << res << endl;
+		}
 	}
-	cout << "результат: " << res << endl;
+	cout << endl;
 	ochistka();
 	goto l1;
 	system("pause");
 	return 0;
+}
 
+int zashchita(string vvod) {
+	int vozvrat = 0;
+	int kol_kv_l = 0, kol_kv_p = 0, kl_kr_l = 0, kl_kr_p = 0,zap=0;
+	for (int i = 0; i < dlina; i++) {
+		if (vvod[i] == '(') {
+			kl_kr_l++;
+		}
+		if (vvod[i] == ')') {
+			kl_kr_p++;
+		}
+		if (vvod[i] == '[') {
+			kol_kv_l++;
+		}
+		if (vvod[i] == ']') {
+			kol_kv_p++;
+		}
+		if (vvod[i] == ',') {
+			zap = 1;
+		}
+	}
+	if (kol_kv_l != kol_kv_p) {
+		cout << "разное количество квадратных скобок" << endl;
+		vozvrat = 1;
+	}
+	if (kl_kr_l != kl_kr_p) {
+		cout << "разное количество круглых скобок" << endl;
+		vozvrat = 1;
+	}
+	if (zap == 1) {
+		cout << "непраильный ввод дробного числа" << endl;
+		vozvrat = 1;
+	}
+	return vozvrat;
 }
 
 string sozd_sk(string vvod, int dl) {
@@ -362,15 +413,10 @@ void chisla(string vvod, int lev, int prav) {
 						pereskok = celikom.length();
 						ch2 = cifry(vvod1);
 						ch3 = sin(ch2);
+						ch3 = round(ch3 * 100) / 100;
 						if ((i == lev + 2) && (perv_znak == 1)) {
 							ch3 = ch3 * (-1);
 						}
-						//if ((scl_m == 1) && (!mesto_scl_m.empty())) {
-						//	if (mesto_scl_m[0] == id_zna[0]) {/////////////////////////////////////////////////////////////////////
-						//		ch3 = ch3 * (-1);
-						//		mesto_scl_m.erase(mesto_scl_m.begin() + 0);
-						//	}
-						//}
 						chi.push_back(ch3);
 						kol_ch++;
 						ch2 = 0;
@@ -395,15 +441,10 @@ void chisla(string vvod, int lev, int prav) {
 					pereskok = celikom.length();
 					ch2 = cifry(vvod1);
 					ch3 = tan(ch2);
+					ch3 = round(ch3 * 100) / 100;
 					if ((i == lev + 2) && (perv_znak == 1)) {
 						ch3 = ch3 * (-1);
 					}
-					/*if ((scl_m == 1) && (!mesto_scl_m.empty())) {
-						if (mesto_scl_m[0] == id_zna[0]) {
-							ch3 = ch3 * (-1);
-							mesto_scl_m.erase(mesto_scl_m.begin() + 0);
-						}
-					}*/
 					chi.push_back(ch3);
 					kol_ch++;
 					ch2 = 0;
@@ -426,10 +467,10 @@ void chisla(string vvod, int lev, int prav) {
 					pereskok = celikom.length();
 					ch2 = cifry(vvod1);
 					ch3 = cos(ch2);
+					ch3 = round(ch3 * 100) / 100;
 					if ((i == lev + 2) && (perv_znak == 1)) {
 						ch3 = ch3 * (-1);
 					}
-					
 					chi.push_back(ch3);
 					kol_ch++;
 					ch2 = 0;
@@ -452,15 +493,10 @@ void chisla(string vvod, int lev, int prav) {
 					pereskok = celikom.length();
 					ch2 = cifry(vvod1);
 					ch3 = log(ch2);
+					ch3 = round(ch3 * 100) / 100;
 					if ((i == lev + 2) && (perv_znak == 1)) {
 						ch3 = ch3 * (-1);
 					}
-					/*if ((scl_m == 1) && (!mesto_scl_m.empty())) {
-						if (mesto_scl_m[0] == id_zna[0]) {
-							ch3 = ch3 * (-1);
-							mesto_scl_m.erase(mesto_scl_m.begin() + 0);
-						}
-					}*/
 					chi.push_back(ch3);
 					kol_ch++;
 					ch2 = 0;
@@ -472,6 +508,7 @@ void chisla(string vvod, int lev, int prav) {
 			break; }
 		case 'e': {
 			ch3 = exp(1);
+			ch3 = round(ch3 * 100) / 100;
 			if ((i == lev + 2) && (perv_znak == 1)) {
 				ch3 = ch3 * (-1);
 			}
