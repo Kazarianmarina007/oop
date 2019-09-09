@@ -56,6 +56,7 @@ int kol_zna = 0;//kol-vo znakov vnutri 1 pari skobok
 int dlina = 0;//dlina vvoda
 int del_na_m = 0;//delenie na minus 
 
+int zashchita (string vvod);
 void ob();//vivod pravil vvoda
 void cveta();
 string sozd_sk(string vvod, int dl);//sozdanie stroki, soderjashchey skobki na sootv mestah, a na ostalnih mestah probely
@@ -76,6 +77,14 @@ int main()
 	cveta();
 	int vveden_fon = 0, vveden_txt = 0;
 	cin >> vveden_fon >> vveden_txt;
+	if (vveden_fon == vveden_txt) {
+		while (vveden_fon == vveden_txt) {
+			cout << "Ð²Ñ‹ Ð²Ð²ÐµÐ»Ð¸ Ð¾Ð´Ð¸Ð½Ð°ÐºÐ¾Ð²Ñ‹Ðµ Ñ†Ð²ÐµÑ‚Ð°, Ð½Ð¸Ñ‡ÐµÐ³Ð¾ Ð½Ðµ Ð±ÑƒÐ´ÐµÑ‚ Ð²Ð¸Ð´Ð½Ð¾" << endl;
+			cout << "Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐµÑ‰Ðµ Ñ€Ð°Ð· ";
+			cin >> vveden_fon >> vveden_txt;
+			cout << endl;
+		}
+	}
 	cvet_f_t c1(vveden_fon,vveden_txt);
 	system("cls");
 	ob();//vivod menu
@@ -85,34 +94,76 @@ int main()
 	vvod = '(' + vvod + ')';
 	int dl = vvod.length();
 	dlina = dl;
+	int zashch = zashchita(vvod);
+	if (zashch == 0) {
+		string skobki = sozd_sk(vvod, dl);//massiv tolko so skobkami
 
-	string skobki = sozd_sk(vvod, dl);//massiv tolko so skobkami
+		kolsk = kolsk / 2;//uznaem kol-vo par skobok
+		int k = kolsk;
+		sk(skobki, kolsk, dl);//rasstavliaem prioretety skobok
 
-	kolsk = kolsk / 2;//uznaem kol-vo par skobok
-	int k = kolsk;
-	sk(skobki, kolsk, dl);//rasstavliaem prioretety skobok
-
-	float res = 0;
-	string vvod_izm = vvod;//ismeniaemiy vvod;
-	for (int i = 0; i < kolsk; i++) {
-		chisla(vvod_izm, prior_skL[i], prior_skP[i]);
-		vvod_izm = dop_dop_ismenenie(vvod_izm,prior_skL[i],prior_skP[i]);
-		znaki(vvod_izm, prior_skL[i], prior_skP[i]);
-		res = podschet(kol_zna, kol_ch);
-		vvod_izm = ismenen(vvod_izm, res, prior_skL[i], prior_skP[i]);
-		vvod_izm = dop_ismenen(vvod_izm);
-		chi.clear();
-		zna.clear();
-		id_zna.clear();
-		kol_ch = 0;
-		kol_zna = 0;
+		float res = 0;
+		string vvod_izm = vvod;//ismeniaemiy vvod;
+		for (int i = 0; i < kolsk; i++) {
+			chisla(vvod_izm, prior_skL[i], prior_skP[i]);
+			vvod_izm = dop_dop_ismenenie(vvod_izm, prior_skL[i], prior_skP[i]);
+			znaki(vvod_izm, prior_skL[i], prior_skP[i]);
+			res = podschet(kol_zna, kol_ch);
+			vvod_izm = ismenen(vvod_izm, res, prior_skL[i], prior_skP[i]);
+			vvod_izm = dop_ismenen(vvod_izm);
+			chi.clear();
+			zna.clear();
+			id_zna.clear();
+			kol_ch = 0;
+			kol_zna = 0;
+		}
+		if (res!=res) {
+			cout << "Ð½ÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ð¼Ð¾ÑÑ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ, Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð½Ð° Ð½Ð¾Ð»ÑŒ, Ð½ÐµÐ¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ð¾ÑÑ‚ÑŒ, Ð»Ð¸Ð±Ð¾ ln Ð¸Ð· Ð¾Ñ‚Ñ€Ð¸Ñ†Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ð³Ð¾ Ñ‡Ð¸ÑÐ»Ð° " << endl;
+		}
+		else {
+			cout << "Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚: " << res << endl;
+		}
 	}
-	cout << "ðåçóëüòàò: " << res << endl;
+	cout << endl;
 	ochistka();
 	goto l1;
 	system("pause");
 	return 0;
+}
 
+int zashchita(string vvod) {
+	int vozvrat = 0;
+	int kol_kv_l = 0, kol_kv_p = 0, kl_kr_l = 0, kl_kr_p = 0,zap=0;
+	for (int i = 0; i < dlina; i++) {
+		if (vvod[i] == '(') {
+			kl_kr_l++;
+		}
+		if (vvod[i] == ')') {
+			kl_kr_p++;
+		}
+		if (vvod[i] == '[') {
+			kol_kv_l++;
+		}
+		if (vvod[i] == ']') {
+			kol_kv_p++;
+		}
+		if (vvod[i] == ',') {
+			zap = 1;
+		}
+	}
+	if (kol_kv_l != kol_kv_p) {
+		cout << "Ñ€Ð°Ð·Ð½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ²Ð°Ð´Ñ€Ð°Ñ‚Ð½Ñ‹Ñ… ÑÐºÐ¾Ð±Ð¾Ðº" << endl;
+		vozvrat = 1;
+	}
+	if (kl_kr_l != kl_kr_p) {
+		cout << "Ñ€Ð°Ð·Ð½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÑ€ÑƒÐ³Ð»Ñ‹Ñ… ÑÐºÐ¾Ð±Ð¾Ðº" << endl;
+		vozvrat = 1;
+	}
+	if (zap == 1) {
+		cout << "Ð½ÐµÐ¿Ñ€Ð°Ð¸Ð»ÑŒÐ½Ñ‹Ð¹ Ð²Ð²Ð¾Ð´ Ð´Ñ€Ð¾Ð±Ð½Ð¾Ð³Ð¾ Ñ‡Ð¸ÑÐ»Ð°" << endl;
+		vozvrat = 1;
+	}
+	return vozvrat;
 }
 
 string sozd_sk(string vvod, int dl) {
@@ -362,15 +413,10 @@ void chisla(string vvod, int lev, int prav) {
 						pereskok = celikom.length();
 						ch2 = cifry(vvod1);
 						ch3 = sin(ch2);
+						ch3 = round(ch3 * 100) / 100;
 						if ((i == lev + 2) && (perv_znak == 1)) {
 							ch3 = ch3 * (-1);
 						}
-						//if ((scl_m == 1) && (!mesto_scl_m.empty())) {
-						//	if (mesto_scl_m[0] == id_zna[0]) {/////////////////////////////////////////////////////////////////////
-						//		ch3 = ch3 * (-1);
-						//		mesto_scl_m.erase(mesto_scl_m.begin() + 0);
-						//	}
-						//}
 						chi.push_back(ch3);
 						kol_ch++;
 						ch2 = 0;
@@ -395,15 +441,10 @@ void chisla(string vvod, int lev, int prav) {
 					pereskok = celikom.length();
 					ch2 = cifry(vvod1);
 					ch3 = tan(ch2);
+					ch3 = round(ch3 * 100) / 100;
 					if ((i == lev + 2) && (perv_znak == 1)) {
 						ch3 = ch3 * (-1);
 					}
-					/*if ((scl_m == 1) && (!mesto_scl_m.empty())) {
-						if (mesto_scl_m[0] == id_zna[0]) {
-							ch3 = ch3 * (-1);
-							mesto_scl_m.erase(mesto_scl_m.begin() + 0);
-						}
-					}*/
 					chi.push_back(ch3);
 					kol_ch++;
 					ch2 = 0;
@@ -426,10 +467,10 @@ void chisla(string vvod, int lev, int prav) {
 					pereskok = celikom.length();
 					ch2 = cifry(vvod1);
 					ch3 = cos(ch2);
+					ch3 = round(ch3 * 100) / 100;
 					if ((i == lev + 2) && (perv_znak == 1)) {
 						ch3 = ch3 * (-1);
 					}
-					
 					chi.push_back(ch3);
 					kol_ch++;
 					ch2 = 0;
@@ -452,15 +493,10 @@ void chisla(string vvod, int lev, int prav) {
 					pereskok = celikom.length();
 					ch2 = cifry(vvod1);
 					ch3 = log(ch2);
+					ch3 = round(ch3 * 100) / 100;
 					if ((i == lev + 2) && (perv_znak == 1)) {
 						ch3 = ch3 * (-1);
 					}
-					/*if ((scl_m == 1) && (!mesto_scl_m.empty())) {
-						if (mesto_scl_m[0] == id_zna[0]) {
-							ch3 = ch3 * (-1);
-							mesto_scl_m.erase(mesto_scl_m.begin() + 0);
-						}
-					}*/
 					chi.push_back(ch3);
 					kol_ch++;
 					ch2 = 0;
@@ -472,6 +508,7 @@ void chisla(string vvod, int lev, int prav) {
 			break; }
 		case 'e': {
 			ch3 = exp(1);
+			ch3 = round(ch3 * 100) / 100;
 			if ((i == lev + 2) && (perv_znak == 1)) {
 				ch3 = ch3 * (-1);
 			}
@@ -604,24 +641,24 @@ void ochistka() {
 }
 
 void ob() {
-	cout << " Óñëîâíûå îáîçíà÷åíèÿ: " << endl << endl;
-	cout << "1. ÷èñëà ñ ïëàâàþùåé òî÷êîé ââîäÿòñÿ ÷åðåç ÒÎ×ÊÓ(íå çàïÿòóþ)" << endl << endl;
-	cout << "2. sin[],cos[],tg[],ln[] ââîäÿòñÿ àíàëîãè÷íî" << endl << endl;
-	cout << "3. ýêñïîíåíòà ââîäèòñÿ êàê e" << endl;
-	cout << "4. âëîæåííûå ôóíêöèè ââîäÿòñÿ â åùå îäíèõ êðóãëûõ ñêîáêàõ" << endl;
-	cout << "	íàïðèìåð, sin[(cos[2])]" << endl;
+	cout << " Ð£ÑÐ»Ð¾Ð²Ð½Ñ‹Ðµ Ð¾Ð±Ð¾Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ: " << endl << endl;
+	cout << "1. Ñ‡Ð¸ÑÐ»Ð° Ñ Ð¿Ð»Ð°Ð²Ð°ÑŽÑ‰ÐµÐ¹ Ñ‚Ð¾Ñ‡ÐºÐ¾Ð¹ Ð²Ð²Ð¾Ð´ÑÑ‚ÑÑ Ñ‡ÐµÑ€ÐµÐ· Ð¢ÐžÐ§ÐšÐ£(Ð½Ðµ Ð·Ð°Ð¿ÑÑ‚ÑƒÑŽ)" << endl << endl;
+	cout << "2. sin[],cos[],tg[],ln[] Ð²Ð²Ð¾Ð´ÑÑ‚ÑÑ Ð°Ð½Ð°Ð»Ð¾Ð³Ð¸Ñ‡Ð½Ð¾" << endl << endl;
+	cout << "3. ÑÐºÑÐ¿Ð¾Ð½ÐµÐ½Ñ‚Ð° Ð²Ð²Ð¾Ð´Ð¸Ñ‚ÑÑ ÐºÐ°Ðº e" << endl;
+	cout << "4. Ð²Ð»Ð¾Ð¶ÐµÐ½Ð½Ñ‹Ðµ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸ Ð²Ð²Ð¾Ð´ÑÑ‚ÑÑ Ð² ÐµÑ‰Ðµ Ð¾Ð´Ð½Ð¸Ñ… ÐºÑ€ÑƒÐ³Ð»Ñ‹Ñ… ÑÐºÐ¾Ð±ÐºÐ°Ñ…" << endl;
+	cout << "	Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, sin[(cos[2])]" << endl;
 	cout << endl << endl << endl;
-	cout << " ââåäèòå ïðèìåð è íàæìèòå ENTER" << endl;
+	cout << " Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ñ€Ð¸Ð¼ÐµÑ€ Ð¸ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ ENTER" << endl;
 }
 
 void cveta() {
-	cout << " 0 — ÷åðíûé   1 — ñèíèé    2 — çåëåíûé" << endl;
-	cout << " 3 — ãîëóáîé  4 — êðàñíûé  5 — ëèëîâûé" << endl;
-	cout << " 6 — æåëòûé   7 — áåëûé    8 — ñåðûé" << endl;
-	cout << " 9 — ñâåëî - ñèíèé      10 — ñâåòëî - çåëåíûé" << endl;
-	cout << " 11 — ñâåòëî - ãîëóáîé  12 — ñâåòëî - êðàñíûé" << endl;
-	cout << " 13 — ñâåòëî - ëèëîâûé  14 — ñâåòëî - æåëòûé" << endl;
+	cout << " 0 â€” Ñ‡ÐµÑ€Ð½Ñ‹Ð¹   1 â€” ÑÐ¸Ð½Ð¸Ð¹    2 â€” Ð·ÐµÐ»ÐµÐ½Ñ‹Ð¹" << endl;
+	cout << " 3 â€” Ð³Ð¾Ð»ÑƒÐ±Ð¾Ð¹  4 â€” ÐºÑ€Ð°ÑÐ½Ñ‹Ð¹  5 â€” Ð»Ð¸Ð»Ð¾Ð²Ñ‹Ð¹" << endl;
+	cout << " 6 â€” Ð¶ÐµÐ»Ñ‚Ñ‹Ð¹   7 â€” Ð±ÐµÐ»Ñ‹Ð¹    8 â€” ÑÐµÑ€Ñ‹Ð¹" << endl;
+	cout << " 9 â€” ÑÐ²ÐµÐ»Ð¾ - ÑÐ¸Ð½Ð¸Ð¹      10 â€” ÑÐ²ÐµÑ‚Ð»Ð¾ - Ð·ÐµÐ»ÐµÐ½Ñ‹Ð¹" << endl;
+	cout << " 11 â€” ÑÐ²ÐµÑ‚Ð»Ð¾ - Ð³Ð¾Ð»ÑƒÐ±Ð¾Ð¹  12 â€” ÑÐ²ÐµÑ‚Ð»Ð¾ - ÐºÑ€Ð°ÑÐ½Ñ‹Ð¹" << endl;
+	cout << " 13 â€” ÑÐ²ÐµÑ‚Ð»Ð¾ - Ð»Ð¸Ð»Ð¾Ð²Ñ‹Ð¹  14 â€” ÑÐ²ÐµÑ‚Ð»Ð¾ - Ð¶ÐµÐ»Ñ‚Ñ‹Ð¹" << endl;
 	cout << endl << endl;
-	cout << "âûáåðèòå öâåò ôîíà è öâåò òåêñòà" << endl;
-	cout << "ââåäèòå íîìåðà âûáðàíûõ öâåòîâ ÷åðåç ïðîáåë ";
+	cout << "Ð²Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ†Ð²ÐµÑ‚ Ñ„Ð¾Ð½Ð° Ð¸ Ñ†Ð²ÐµÑ‚ Ñ‚ÐµÐºÑÑ‚Ð°" << endl;
+	cout << "Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€Ð° Ð²Ñ‹Ð±Ñ€Ð°Ð½Ñ‹Ñ… Ñ†Ð²ÐµÑ‚Ð¾Ð² Ñ‡ÐµÑ€ÐµÐ· Ð¿Ñ€Ð¾Ð±ÐµÐ» ";
 }
