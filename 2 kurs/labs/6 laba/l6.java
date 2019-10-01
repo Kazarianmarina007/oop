@@ -41,6 +41,12 @@ public class l6 extends JFrame {
 					else {
 						if(sc<3) {
 							j1.setText("неверно, это была попытка: "+sc);
+							if(ch<t) {
+								j2.setText("наше число больше");
+							}else if(ch>t) {
+								j2.setText("наше число меньше");
+							}
+							
 						}
 						else {
 							j1.setText(" ты проиграл,\n это было число "+t);
