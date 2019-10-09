@@ -19,8 +19,19 @@ public class pia {
 		System.out.println(p2);
 		int hod=0;
 		while ((p1.size()!=0)&&(p2.size()!=0)&&(hod<106)) {
-			if((p1.get(0)>p2.get(0))||(p1.get(0)==1)&&(p2.get(0)==10)||
-					((p2.get(0)!=1)&&(p1.get(0)!=10))) {
+			if((p2.get(0)==1)&&(p1.get(0)==10)) {
+				p2.add(p1.get(0));
+				p2.add(p2.get(0));
+				p1.remove(0);
+				p2.remove(0);
+			}
+			else if((p1.get(0)==1)&&(p2.get(0)==10)) {
+				p1.add(p2.get(0));
+				p1.add(p1.get(0));
+				p1.remove(0);
+				p2.remove(0);
+			}
+			else if(p1.get(0)>p2.get(0)) {
 				p1.add(p2.get(0));
 				p1.add(p1.get(0));
 				p1.remove(0);
@@ -34,9 +45,9 @@ public class pia {
 				p1.remove(0);
 			}
 			hod++;
-			//System.out.println("hod "+hod);
-			//System.out.println(p1);
-			//System.out.println(p2);
+			System.out.println("hod "+hod);
+			System.out.println(p1);
+			System.out.println(p2);
 
 		}
 		if(p1.size()==0) {
